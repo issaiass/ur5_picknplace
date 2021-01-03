@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- send robot urdf to param server -->
+  <!-- push robot_description to factory and spawn robot in gazebo world -->
+  <!-- start gazebo controlllers (joint_state_publisher, robot_publisher and arm related controllers)-->
+  <!-- Launch moveit planning context execution -->
+  <!-- Load kinematics -->
+  <!-- Launch rviz -->
+  <include file="$(find ur5_picknplace)/launch/gazebo_rviz_moveit/arm_rviz_moveit_gazebo.launch"></include>
+
+</launch>

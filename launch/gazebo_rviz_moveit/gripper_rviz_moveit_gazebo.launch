@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  <arg name="sim" default="true" doc="Simulation or realtime" />
+  <arg name="world_name" default="worlds/empty.world"/>
+  <arg name="rviz_config" default="$(find ur5_picknplace)/rviz/moveit.rviz"/>
+  <arg name="kinematics" default="$(find robotiq_85_moveit_config)/config/kinematics.yaml"/>  
+
+  <!-- send robot urdf to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur5_picknplace)/urdf/base/robotiq_85_gripper.xacro'"/>
+
+  <!-- Launch gazebo and its controllers -->
+  <include file="$(find ur5_picknplace)/launch/gazebo/spawn_gripper.launch">
+    <arg name="world_name" default="$(arg world_name)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>  
+  </include>  
+
+  <!-- Launch the moveit planning context -->
+  <include file="$(find ur5_picknplace)/launch/common/robotiq_85_moveit_planning_execution.launch">
+    <arg name="sim" value="$(arg sim)" />
+  </include>  
+
+  <!-- Load kinematics configuration -->
+  <rosparam command="load" file="$(arg kinematics)"/>
+
+  <!-- Run Rviz and load the default config to see the state of the move_group node -->
+  <include file="$(find ur5_picknplace)/launch/common/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(arg rviz_config)" />
+  </include>  
+
+</launch>

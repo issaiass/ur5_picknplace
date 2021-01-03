@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Launch arm in gazebo -->
+  <include file="$(find ur5_picknplace)/launch/gazebo/spawn_arm.launch"/>
+
+  <!-- Launch rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ur5_picknplace)/rviz/urdf.rviz" required="true" />
+</launch>

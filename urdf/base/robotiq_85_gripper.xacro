@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<robot name="robotiq_85_gripper" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find robotiq_85_description)/urdf/robotiq_85_gripper.urdf.xacro" />
+    
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      </plugin>
+    </gazebo>
+    
+    <link name="world"/>
+    <link name="gripper_link">
+    </link>
+    <joint name="world_fixed" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="world"/>
+        <child link="gripper_link"/>
+    </joint>
+
+    
+    <xacro:robotiq_85_gripper prefix="" parent="gripper_link" >
+        <origin xyz="0 0 0.1" rpy="0 -1.5707 0"/>
+    </xacro:robotiq_85_gripper>
+    
+</robot>

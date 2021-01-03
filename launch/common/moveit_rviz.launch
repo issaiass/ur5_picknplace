@@ -1,0 +1,12 @@
+<launch>
+
+  <arg name="debug" default="false" />
+  <arg name="rviz_config" default="$(find ur5_picknplace)/rviz/moveit.rviz"/>
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+
+  <node name="$(anon rviz)" launch-prefix="$(arg launch_prefix)" pkg="rviz" type="rviz" respawn="false"
+    args="-d $(arg rviz_config)" output="screen">
+  </node>
+
+</launch>

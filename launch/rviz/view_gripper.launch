@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- send robot urdf to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur5_picknplace)/urdf/base/robotiq_85_gripper.xacro'" />
+
+  <!-- publish TF, Joint States and so on-->
+  <include file="$(find ur5_picknplace)/launch/common/publishers.launch"/>
+
+  <!-- Launch rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ur5_picknplace)/rviz/urdf.rviz" required="true" />
+</launch>
