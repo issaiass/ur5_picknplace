@@ -1,4 +1,25 @@
 <?xml version="1.0"?>
 <launch>
-    <include file="$(find ur5_robotiq_85_simulation)/launch/simulation.launch"></include>
+  <arg name="paused" default="false" />
+  <arg name="gui" default="true" />  
+  <arg name="world_name" default="worlds/empty.world"/>
+  <arg name="x" default ="0.0" />
+  <arg name="y" default ="0.0" />
+  <arg name="z" default="0.0" />
+  <arg name="roll" default="0.0" />
+  <arg name="pitch" default="0.0" />
+  <arg name="yaw" default="0.0" />
+
+  <include file="$(find ur5_robotiq_85_simulation)/launch/simulation.launch">
+    <arg name="world_name" value="$(arg world_name)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>  
+    <arg name="x" value="$(arg x)" />
+    <arg name="y" value="$(arg y)" />
+    <arg name="z" value="$(arg z)" />
+    <arg name="roll" value="$(arg roll)" />
+    <arg name="pitch" value="$(arg pitch)" />
+    <arg name="yaw" value="$(arg yaw)" />
+  </include>
+
 </launch>

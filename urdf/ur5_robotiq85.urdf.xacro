@@ -1,29 +1,37 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur5" >
-  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>  
 
   <!-- common stuff -->
   <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
-
-  <!-- ur5 -->
+  <!-- ur5 xacro -->
   <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
-  <!-- robotiq 85 gripper -->
+  <!-- robotiq 85 gripper xacro -->
   <xacro:include filename="$(find robotiq_85_description)/urdf/robotiq_85_gripper.urdf.xacro" />
 
-
-  <!-- arm -->
+  <!-- arm + gripper -->
   <xacro:ur5_robot prefix="" joint_limited="false" transmission_hw_interface="$(arg transmission_hw_interface)"/>
-  <!-- gripper -->  
   <xacro:robotiq_85_gripper prefix="" parent="ee_link" >
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </xacro:robotiq_85_gripper>
 
-
+  <!-- virtual joint ur5 -->
   <link name="world" />
-  <joint name="world_joint" type="fixed">
+  <joint name="robot_virtual_joint" type="fixed">
     <parent link="world" />
     <child link = "base_link" />
-    <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0" />
+    <origin xyz="0 0 0.6" rpy="0 0 -1.5707" />
+  </joint>
+
+  <!-- microsoft kinect -->
+  <xacro:include filename="$(find ur5_picknplace)/urdf/sensors/kinect_v2/kinect_v2.urdf.xacro" />
+  <xacro:kinect_v2  parent="world">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:kinect_v2>
+  <joint name="kinect_virtual_joint" type="fixed">
+    <parent link="world" />
+    <child link="kinect2_base_link" />
+    <origin xyz="1.39 0 1.01" rpy="0 0 3.1416" />
   </joint>
 
 </robot>

@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 1 world kinect2_base_link 30" />
+  <param name="kinect_description" command="$(find xacro)/xacro --inorder '$(find ur5_picknplace)/urdf/sensors/kinect_v2/kinect_v2_standalong.urdf.xacro'" />
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model dhrobot -param kinect_description"/>
+</launch>

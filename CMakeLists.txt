@@ -17,6 +17,9 @@ find_package(catkin REQUIRED
 )
 
 
+#link_directories(${GAZEBO_LIBRARY_DIRS})
+#include_directories(${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
+
 catkin_package(
   LIBRARIES
   INCLUDE_DIRS

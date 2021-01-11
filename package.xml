@@ -27,7 +27,10 @@
   <build_depend>tf2_geometry_msgs</build_depend>
 
   <run_depend>panda_moveit_config</run_depend>
-  <run_depend>franka_description</run_depend>
+  <run_depend>gazebo</run_depend>
+  <run_depend>gazebo_ros</run_depend>    
+  <run_depend>robotiq_85_picknplace</run_depend>
+  <run_depend>ur_description</run_depend>  
   <run_depend>moveit_core</run_depend>
   <run_depend>moveit_commander</run_depend>
   <run_depend>moveit_fake_controller_manager</run_depend>
@@ -43,8 +46,8 @@
   <run_depend>tf2_geometry_msgs</run_depend>
   <run_depend>xacro</run_depend>
 
-
   <export>
+    <gazebo_ros gazebo_model_path="${prefix}/models" />
   </export>
 
 </package>

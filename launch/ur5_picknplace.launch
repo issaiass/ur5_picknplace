@@ -7,6 +7,8 @@
   <!-- Launch moveit planning context execution -->
   <!-- Load kinematics -->
   <!-- Launch rviz -->
-  <include file="$(find ur5_picknplace)/launch/gazebo_rviz_moveit/arm_rviz_moveit_gazebo.launch"></include>
+  <include file="$(find ur5_robotiq_85_simulation)/launch/simulation.launch">
+    <arg name="world_name" value="$(find ur5_picknplace)/worlds/ur5_cubes.world"/>
+  </include>
 
 </launch>

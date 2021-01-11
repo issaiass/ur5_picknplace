@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Launch arm in gazebo -->
+  <include file="$(find ur5_picknplace)/launch/gazebo/spawn_kinect_v2.launch"></include>
+
+  <!-- Launch rviz -->
+  <include file="$(find ur5_picknplace)/launch/rviz/view_kinect_v2.launch"></include>
+</launch>

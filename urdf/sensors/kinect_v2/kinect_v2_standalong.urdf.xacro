@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot name="kinect_v2_standalong" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find ur5_picknplace)/urdf/sensors/kinect_v2/kinect_v2.urdf.xacro" />
+
+    <link name="world" />
+    <xacro:kinect_v2  parent="world">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:kinect_v2>
+
+    <joint name="kinect_virtual_joint" type="fixed">
+      <parent link="world" />
+      <child link="kinect2_base_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+      
+</robot>

@@ -5,8 +5,8 @@
   <!-- send robot urdf to param server -->
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur5_picknplace)/urdf/base/ur5_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
 
-  <!-- publish TF, Joint States and so on -->
-  <include file="$(find ur5_picknplace)/launch/common/controller_utils.launch"/>  
+  <!-- publish TF, Joint States and so on-->
+  <include file="$(find ur5_picknplace)/launch/common/publishers.launch"/>
 
   <!-- Launch rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ur5_picknplace)/rviz/urdf.rviz" required="true" />
