@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(ur5_picknplace)
 
+
 find_package(catkin REQUIRED
   COMPONENTS
     interactive_markers
@@ -14,11 +15,10 @@ find_package(catkin REQUIRED
     geometric_shapes
     tf2_ros
     tf2_geometry_msgs
+    Eigen3
 )
 
-
-#link_directories(${GAZEBO_LIBRARY_DIRS})
-#include_directories(${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
+include_directories(SYSTEM ${catkin_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIRS})
 
 catkin_package(
   LIBRARIES
@@ -30,3 +30,9 @@ catkin_package(
     interactive_markers
     tf2_geometry_msgs
 )
+
+add_executable(picknplace src/picknplace.cpp)
+target_link_libraries(picknplace ${catkin_LIBRARIES})
+
+add_executable(planning_scene src/planning_scene.cpp)
+target_link_libraries(planning_scene ${catkin_LIBRARIES})

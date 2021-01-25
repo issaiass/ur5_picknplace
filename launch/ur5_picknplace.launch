@@ -11,4 +11,8 @@
     <arg name="world_name" value="$(find ur5_picknplace)/worlds/ur5_cubes.world"/>
   </include>
 
+  <!--node pkg="tf" type="static_transform_publisher" name="cube1_broadcaster" args="0.4 -0.2 0.8 0 0 0 1 world cube1_link 50" />
+  <node pkg="tf" type="static_transform_publisher" name="cube2_broadcaster" args="0.4  0.0 0.8 0 0 0 1 world cube2_link 50" />
+  <node pkg="tf" type="static_transform_publisher" name="cube3_broadcaster" args="0.4  0.2 0.8 0 0 0 1 world cube3_link 50" /-->    
+
 </launch>
